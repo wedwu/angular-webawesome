@@ -1,0 +1,13 @@
+<wa-page mobile-breakpoint="768px">
+  <div slot="banner">Web Awesome</div>
+  <app-header />
+  <app-nav-bar />
+  <main class="page-main">
+    <app-breadcrumb homeHref="" pageHref="projects" />
+    <h1>Projects</h1>
+    <p>page content</p>
+    <app-users-table (notState)="usersLoaded.set($event)" />
+  </main>
+  <app-aside [usersLoaded]="usersLoaded()" [showCallout]="false" />
+  <app-footer />
+</wa-page>

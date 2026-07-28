@@ -1,0 +1,9 @@
+<div>
+  <wa-input
+    label="Your name"
+    placeholder="Type here"
+    (input)="onInput($event)"
+    (change)="onChange($event)"
+  ></wa-input>
+  <p>Live value: {{ value() }}</p>
+</div>

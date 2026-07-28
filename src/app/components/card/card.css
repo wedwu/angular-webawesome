@@ -1,0 +1,25 @@
+/* Card.css */
+
+/* Mirrors the inline styles applied to <WaCard> in the React Card component,
+ * plus the .card-grid wa-card rules from the original Card.css. */
+.users-card {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  align-self: start;
+  flex-grow: 1;
+  flex-shrink: 0;
+  height: 100%;
+}
+
+.users-card h3 {
+  margin-block-start: 0;
+}
+
+.users-card p {
+  text-align: left;
+  margin-block-end: auto;
+}

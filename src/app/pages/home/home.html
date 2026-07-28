@@ -1,0 +1,28 @@
+<wa-page mobile-breakpoint="768px">
+  @if (usersLoaded()) {
+    <wa-callout variant="success">Users loaded successfully!</wa-callout>
+  }
+  <div slot="banner">Web Awesome</div>
+  <app-header />
+  <app-nav-bar />
+  <main class="page-main">
+    <app-breadcrumb homeHref="/" pageHref="/home" />
+    <h1>Home</h1>
+    <p>page content</p>
+    @if (state() === 'loading') {
+      <div class="users-card__center">
+        <wa-spinner style="font-size: 2rem"></wa-spinner>
+      </div>
+    }
+    @if (state() === 'ready' && user() !== null) {
+      <div class="user-details">
+        <h2>User Details</h2>
+        <p><strong>Name:</strong> {{ user()!.name }}</p>
+        <p><strong>Email:</strong> {{ user()!.email }}</p>
+        <p><strong>Role:</strong> {{ user()!.role }}</p>
+      </div>
+    }
+  </main>
+  <app-aside [usersLoaded]="usersLoaded()" [showCallout]="false" />
+  <app-footer />
+</wa-page>

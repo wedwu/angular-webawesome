@@ -1,0 +1,65 @@
+<wa-card class="users-card">
+  <div slot="header" class="users-card__header">
+    <strong>Team members</strong>
+    <wa-button
+      size="small"
+      appearance="outlined"
+      (click)="load()"
+      [disabled]="state() === 'loading'"
+    >
+      Refresh
+    </wa-button>
+  </div>
+
+  @if (state() === 'loading') {
+    <div class="users-card__center">
+      <wa-spinner style="font-size: 2rem"></wa-spinner>
+    </div>
+  }
+
+  @if (state() === 'error') {
+    <wa-callout variant="danger">
+      Couldn’t load users.
+      <wa-button size="small" appearance="plain" (click)="load()">Try again</wa-button>
+    </wa-callout>
+  }
+
+  @if (notificationState()) {
+    <wa-callout variant="success">Users loaded successfully!</wa-callout>
+  }
+
+  @if (state() === 'ready' && loadedAt() !== null) {
+    <p class="users-card__loaded">
+      Loaded <wa-relative-time [date]="isoDate(loadedAt()!)" sync></wa-relative-time>
+    </p>
+  }
+
+  @if (state() === 'ready') {
+    <div class="users-table-scroll">
+      <table class="users-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Joined</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of users(); track user.id) {
+            <tr>
+              <td data-label="Name">{{ user.name }}</td>
+              <td data-label="Email">{{ user.email }}</td>
+              <td data-label="Role">{{ user.role }}</td>
+              <td data-label="Status">
+                <wa-badge [variant]="statusVariant[user.status]">{{ user.status }}</wa-badge>
+              </td>
+              <td data-label="Joined">{{ localeDate(user.joined) }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</wa-card>

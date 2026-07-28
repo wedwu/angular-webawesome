@@ -1,0 +1,16 @@
+<wa-breadcrumb>
+  <wa-breadcrumb-item
+    [href]="homeActive() ? null : homeHref()"
+    [class.is-current]="homeActive()"
+    [attr.aria-current]="homeActive() ? 'page' : null"
+  >
+    {{ homeLabel() }}
+  </wa-breadcrumb-item>
+  <wa-breadcrumb-item
+    [href]="pageActive() ? null : pageHref()"
+    [class.is-current]="pageActive()"
+    [attr.aria-current]="pageActive() ? 'page' : null"
+  >
+    {{ pageLabel() }}
+  </wa-breadcrumb-item>
+</wa-breadcrumb>

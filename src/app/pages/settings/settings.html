@@ -1,0 +1,18 @@
+<wa-page mobile-breakpoint="768px">
+  <div slot="banner">Web Awesome</div>
+  <app-header />
+  <app-nav-bar />
+  <main class="page-main">
+    <app-breadcrumb homeHref="/" pageHref="/settings" />
+    <h1>Settings</h1>
+    <p>page content</p>
+    <div class="card-grid">
+      <app-card title="Getting started" [state]="state()" desc="" [button]="null" type="generic" />
+      <app-card title="Components" [state]="state()" desc="" [button]="null" type="generic" />
+      <app-card title="Input" [state]="state()" desc="" [button]="null" type="generic" />
+      <app-card title="Project Time" [state]="state()" desc="" [button]="null" type="generic" />
+    </div>
+  </main>
+  <app-aside [usersLoaded]="usersLoaded()" [showCallout]="usersLoaded()" />
+  <app-footer />
+</wa-page>

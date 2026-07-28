@@ -1,0 +1,10 @@
+<nav class="page-nav">
+  @for (link of links; track link.path) {
+    <wa-button
+      [appearance]="currentUrl() === link.path ? 'filled' : 'plain'"
+      (click)="navigate(link.path)"
+    >
+      {{ link.label }}
+    </wa-button>
+  }
+</nav>

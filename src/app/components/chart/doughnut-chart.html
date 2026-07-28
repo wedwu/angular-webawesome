@@ -1,0 +1,24 @@
+<div class="doughnut">
+  <div class="doughnut__figure" [style.width.px]="size()" [style.height.px]="size()">
+    <div
+      class="doughnut__ring"
+      role="img"
+      [attr.aria-label]="label()"
+      [style.background]="ringGradient()"
+    ></div>
+    <div class="doughnut__hole">
+      <span class="doughnut__total">{{ total() }}</span>
+      <span class="doughnut__unit">total</span>
+    </div>
+  </div>
+
+  <ul class="doughnut__legend">
+    @for (entry of legend(); track entry.label) {
+      <li>
+        <span class="doughnut__swatch" [style.background]="entry.color"></span>
+        {{ entry.label }}
+        <span class="doughnut__value">{{ entry.percent }}%</span>
+      </li>
+    }
+  </ul>
+</div>

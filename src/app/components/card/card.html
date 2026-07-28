@@ -1,0 +1,47 @@
+<wa-card class="users-card">
+  <h3>{{ title() }}</h3>
+
+  @if (state() === 'loading') {
+    <div class="users-card__center">
+      <wa-spinner style="font-size: 2rem"></wa-spinner>
+    </div>
+  }
+
+  @if (state() === 'error') {
+    <wa-callout variant="danger">
+      Couldn’t load {{ title() }}.
+      <wa-button size="small" appearance="plain">Try again</wa-button>
+    </wa-callout>
+  }
+
+  @if (state() === 'ready' && type() === 'form') {
+    <p [innerHTML]="desc()"></p>
+    <app-input-v1 />
+    <app-input-v2 />
+    <wa-input
+      label="Your name"
+      placeholder="Type here"
+      (input)="onInput($event)"
+      (change)="onChange($event)"
+    ></wa-input>
+    <p>Live value: {{ value() }}</p>
+  }
+
+  @if (state() === 'ready' && type() === 'chart') {
+    <div style="width: 100%; height: 200px; align-self: center">
+      <app-doughnut-chart
+        label="Project time distributed across activities"
+        [segments]="projects()"
+      />
+    </div>
+  }
+
+  @if (state() === 'ready' && type() === 'generic') {
+    <p [innerHTML]="desc()"></p>
+    @if (button(); as btn) {
+      <wa-button slot="footer" [variant]="btn.variant" [appearance]="btn.appearance">
+        {{ btn.text }}
+      </wa-button>
+    }
+  }
+</wa-card>

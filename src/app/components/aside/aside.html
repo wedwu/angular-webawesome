@@ -1,0 +1,11 @@
+@if (showCallout()) {
+  <aside class="page-aside">
+    <h4>Activity</h4>
+    @if (!usersLoaded()) {
+      <p>Nothing new right now.</p>
+    }
+    @if (usersLoaded()) {
+      <wa-callout variant="success">Users loaded successfully!</wa-callout>
+    }
+  </aside>
+}

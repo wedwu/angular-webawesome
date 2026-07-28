@@ -1,0 +1,12 @@
+.page-main h1 {
+  margin-block-start: 0;
+  color: var(--wa-color-text-default, #1f2933);
+}
+
+.wa-dark .page-main h1 {
+  color: var(--wa-color-text-default, #f9fafb)!important;
+}
+
+.wa-dark .page-main p {
+  color: var(--wa-color-text-default, #f9fafb) !important;
+}

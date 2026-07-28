@@ -1,0 +1,11 @@
+/* Breadcrumb.css */
+
+:host {
+  display: contents;
+}
+
+.is-current {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.6;
+}

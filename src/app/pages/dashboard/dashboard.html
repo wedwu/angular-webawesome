@@ -1,0 +1,50 @@
+<wa-page mobile-breakpoint="768px">
+  @if (usersLoaded()) {
+    <wa-callout variant="success">Users loaded successfully!</wa-callout>
+  }
+  <div slot="banner">Web Awesome</div>
+  <app-header />
+  <app-nav-bar />
+  <main class="page-main">
+    <app-breadcrumb homeHref="/" pageHref="/dashboard" />
+    <h1>Dashboard</h1>
+    <p>This is the dashboard page.</p>
+    @if (usersLoaded()) {
+      <wa-progress-bar value="70" label="Page load progress" indeterminate></wa-progress-bar>
+    }
+    <div class="card-grid">
+      <app-card
+        title="Project Time Allocation"
+        [state]="state()"
+        desc=""
+        [button]="null"
+        type="chart"
+        [projects]="projects()"
+      />
+      <app-card
+        title="Input"
+        [state]="state()"
+        desc="Use the <code>wa-input</code> component for user input."
+        [button]="{ text: 'View docs', appearance: 'outlined' }"
+        type="form"
+      />
+      <app-card
+        title="Getting Started"
+        [state]="state()"
+        desc="Edit <code>src/app/pages/home/home.ts</code> to change this content."
+        [button]="{ text: 'Learn more', variant: 'brand' }"
+        type="generic"
+      />
+      <app-card
+        title="Components"
+        [state]="state()"
+        desc="Mix any <code>wa-*</code> elements inside the page slots."
+        [button]="{ text: 'View docs', appearance: 'outlined' }"
+        type="generic"
+      />
+    </div>
+    <app-users-table (notState)="usersLoaded.set($event)" />
+  </main>
+  <app-aside [usersLoaded]="usersLoaded()" [showCallout]="false" />
+  <app-footer />
+</wa-page>
