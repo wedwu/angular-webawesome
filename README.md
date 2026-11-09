@@ -4,6 +4,10 @@ An **Angular 21** port of the `react-webAwesome` app — a small dashboard built
 [WebAwesome](https://webawesome.com) web components. Same pages, components, mock
 data and behaviour, re-expressed with idiomatic Angular.
 
+**[Live demo](https://wedwu.github.io/angular-webawesome/)**
+
+![Dashboard](docs/screenshot.png)
+
 ```bash
 npm install
 npm start          # ng serve  ->  http://localhost:4200
